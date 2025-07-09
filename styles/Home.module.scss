@@ -1,0 +1,59 @@
+.hero {
+    padding: 330px 0;
+
+    position: relative;
+
+    overflow: hidden;
+    border-radius: 0px 0px 0px 291px;
+
+    .hero_container {
+        max-width: 567px;
+        
+        * {
+            line-height: 125%;
+        }
+
+        h1 {
+            margin-bottom: 9px;
+
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 2.5s ease, transform 2s ease;
+            
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .text {
+            margin-bottom: 21px;
+
+            opacity: 0;
+
+            font-family: var(--font-jost);
+            font-size: 22px;
+            color: var(--fourth-color);
+            
+            transform: translateX(-80px);
+            transition: opacity 2.5s 0.3s ease, transform 2s 0.3s ease;
+
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .btn {
+            opacity: 0;
+
+            transform: translateX(-80px);
+            transition: opacity 2.5s 0.5s ease, transform 2s 0.5s ease;
+
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+}
