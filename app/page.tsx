@@ -178,22 +178,26 @@ export default function Home() {
 
       {/* Client section */}
       <section className={styles.client}>
-        {
-          (() => {
-            const clientImages = [img01, img02, img03, img04, img05];
-            const items = [];
+        <div className="container">
+          <div className={styles.client_container}>
+            {
+              (() => {
+                const clientImages = [img01, img02, img03, img04, img05];
+                const items = [];
 
-            for (let i=0; i<5; i++) {
-              items.push(
-                <Image
-                  src={clientImages[i]}
-                  alt={`Client ${i}`}
-                />
-              )
+                for (let i=0; i<5; i++) {
+                  items.push(
+                    <Image
+                      src={clientImages[i]}
+                      alt={`Client ${i}`}
+                    />
+                  )
+                }
+                return items;
+              })()
             }
-            return items;
-          })()
-        }
+          </div>
+        </div>
       </section>
     </>
   );

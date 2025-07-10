@@ -242,6 +242,14 @@
     }
 }
 
+.client {
+    .client_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
 
 // Анимация вращения и дрожания
 @keyframes shake-rotate {
