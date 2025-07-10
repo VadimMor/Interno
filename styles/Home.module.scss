@@ -1,0 +1,268 @@
+:global(section) {
+  margin: 0 0 200px 0;
+
+  &.testimonial,
+  &.client {
+    margin-bottom: 150px;
+  }
+}
+
+.hero {
+    padding: 330px 0;
+
+    position: relative;
+
+    overflow: hidden;
+    border-radius: 0px 0px 0px 291px;
+
+    .hero_container {
+        max-width: 567px;
+        
+        * {
+            line-height: 125%;
+        }
+
+        h1 {
+            margin-bottom: 9px;
+
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: opacity 2.5s ease, transform 2s ease;
+            
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .text {
+            margin-bottom: 21px;
+
+            opacity: 0;
+
+            font-family: var(--font-jost);
+            font-size: 22px;
+            color: var(--fourth-color);
+            
+            transform: translateX(-80px);
+            transition: opacity 2.5s 0.3s ease, transform 2s 0.3s ease;
+
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .btn {
+            opacity: 0;
+
+            transform: translateX(-80px);
+            transition: opacity 2.5s 0.5s ease, transform 2s 0.5s ease;
+
+            &.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+}
+
+.work {
+    .work_container {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+.about {
+    .about_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .content {
+            max-width: 460px;
+
+            h2 {
+                margin-bottom: 33px;
+
+                opacity: 0;
+
+                line-height: 125%;
+
+                transform: translateX(-80px);
+                transition: opacity 2.5s ease, transform 2s ease;
+
+                &.visible {
+                    opacity: 1;
+
+                    transform: translateX(0);
+                }
+            }
+
+            .text {
+                margin-bottom: 45px;
+
+                opacity: 0;
+
+                font-family: var(--font-jost);
+                font-size: 22px;
+                line-height: 150%;
+                color: var(--fourth-color);
+                
+                transform: translateX(-80px);
+                transition: opacity 2.5s 0.2s ease, transform 2s 0.2s ease;
+                
+                &.visible {
+                    opacity: 1;
+
+                    transform: translateX(0);
+                }
+            }
+
+            .contact {
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                margin-bottom: 47px;
+                
+                opacity: 0;
+
+                font-family: var(--font-jost);
+
+                transform: translateX(-80px);
+                transition: opacity 2.5s 0.4s ease, transform 2s 0.4s ease;
+
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    max-width: 93px;
+                    width: 100%;
+                    aspect-ratio: 1;
+
+                    background: #F4F0EC;
+                    border-radius: 50%;
+
+                    font-size: 32px;
+                    color: var(--first-color);
+
+                    transition: transform 0.3s ease;
+
+                    span {
+                        transition: transform 0.3s ease;
+                    }
+                }
+
+                .data {
+                    display: flex;
+                    flex-direction: column;
+
+                    line-height: 150%;
+
+                    .phone {
+                        font-weight: 600;
+                        font-size: 24px;
+                        line-height: 150%;
+                        color: var(--fourth-color);
+                    }
+
+                    .call {
+                        font-size: 22px;
+                        line-height: 150%;
+                        color: var(--fourth-color);
+                    }
+                }
+
+                &:hover .icon,
+                &:focus .icon {
+                    animation: shake-rotate 1.4s ease-in-out infinite;
+
+                    span {
+                        transform: scale(1.2);
+                    }
+                }
+
+                
+                &.visible {
+                    opacity: 1;
+
+                    transform: translateX(0);
+                }
+            }
+
+            .btn {
+                opacity: 0;
+                
+                transform: translateX(-80px);
+                transition: opacity 2.5s 0.6s ease, transform 2s 0.6s ease;
+
+                &.visible {
+                    opacity: 1;
+
+                    transform: translateX(0);
+                }
+            }
+        }
+
+        .image {
+            max-width: 650px;
+            width: 100%;
+            aspect-ratio: 653 / 700;
+            
+            position: relative;
+
+            overflow: hidden;
+            background: #C4C4C4;
+            clip-path: xywh(50% 50% 0% 0% round 0 100% 0 100%);
+            transition: clip-path 2s ease-in-out;
+
+            &.visible {
+                clip-path: xywh(0 0 100% 100% round 0 50.08% 0 17.57%);
+            }
+        }
+    }
+}
+
+.testimonial {
+    .testimonial_container {
+        padding: 88px 25px;
+
+        border-radius: 70px;
+        background: #F4F0EC;
+
+        h2 {
+            max-width: 540px;
+            margin: 0 auto 38px;
+
+            line-height: 150%;
+            letter-spacing: 2%;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.client {
+    .client_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+
+// Анимация вращения и дрожания
+@keyframes shake-rotate {
+    0%   { transform: rotate(0deg); }
+    10%  { transform: rotate(-10deg); }
+    20%  { transform: rotate(10deg); }
+    30%  { transform: rotate(-6deg); }
+    40%  { transform: rotate(6deg); }
+    50%  { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}

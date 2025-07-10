@@ -8,13 +8,19 @@ import styles from '@/styles/Header.module.scss';
 export default function Header() {
     const logoText = "Interno";
     const [isSearchActive, setIsSearchActive] = useState(false);
+    const [isInputVisible, setIsInputVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
     const searchRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
 
     // Открытие поиска 
     const handleSearchClick = () => {
+        if (!isSearchActive) {
         setIsSearchActive(true);
+        setTimeout(() => {
+            setIsInputVisible(true);
+            }, 300); // Подходящее время ≈ половина transition
+        }
     };
 
     // Закрытие поиска при клике вне области поиска
@@ -34,6 +40,9 @@ export default function Header() {
     };
 
     useEffect(() => {
+        if (!isSearchActive) {
+            setIsInputVisible(false);
+        }
         // Автофокус при поле ввода
         if (isSearchActive && inputRef.current) {
             inputRef.current.focus();
@@ -87,6 +96,7 @@ export default function Header() {
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)} // Обновление состояния
                                 onKeyDown={handleKeyDown} // Обработка нажатия клавиш
+                                onFocus={handleSearchClick}
                             />
                         </div>
                     </div>

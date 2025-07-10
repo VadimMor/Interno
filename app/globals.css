@@ -57,6 +57,14 @@ main {
 	margin: 0 auto;
 	padding: 0;
 }
+h1 {
+	font-size: 85px;
+	color: var(--second-color);
+}
+h2 {
+	font-size: 50px;
+	color: var(--second-color);
+}
 /*----------------------*/
 
 
@@ -65,5 +73,6 @@ main {
   --first-color: #CDA274;
   --second-color: #292F36;
   --third-color: #F4F0EC; 
+  --fourth-color: #4D5053;
 }
 /*----------------------*/
