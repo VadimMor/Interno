@@ -1,6 +1,6 @@
 import { useEffect, useState, RefObject } from 'react';
 
-export function useInView(ref: RefObject<HTMLElement | null>, threshold = 0.3) {
+export function useInView(ref: RefObject<HTMLElement | null>, threshold = 0.2) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
