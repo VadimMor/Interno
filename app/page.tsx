@@ -7,6 +7,7 @@ import Image from 'next/image';
 // Импорт компонентов
 import MainButton from '@/components/MainButton';
 import WorkCard from '@/components/Home/WorkCard';
+import TestimonialCard from '@/components/Home/TestimonialCard';
 
 // Импорт стилей
 import styles from '@styles/Home.module.scss';
@@ -14,7 +15,13 @@ import styles from '@styles/Home.module.scss';
 // Импорт изображений
 import heroImg from '@assets/hero_back.jpg';
 import aboutImg from '@assets/about.jpg';
+import img01 from '@assets/01.svg';
+import img02 from '@assets/02.svg';
+import img03 from '@assets/03.svg';
+import img04 from '@assets/04.svg';
+import img05 from '@assets/05.svg';
 
+// Импорт хуков
 import { useInView } from '@/hooks/useInView';
 
 export default function Home() {
@@ -22,10 +29,12 @@ export default function Home() {
   const heroRef = useRef<HTMLElement | null>(null);
   const workRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
+  const testimonialRef = useRef<HTMLElement | null>(null);
 
   const heroVisible = useInView(heroRef);
   const workVisible = useInView(workRef);
   const aboutVisible = useInView(aboutRef);
+  const testimonialVisible = useInView(testimonialRef);
 
   return (
     <>
@@ -132,6 +141,59 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Testimonial section */}
+      <section className={styles.testimonial} ref={testimonialRef}>
+        <div className="container">
+          <div className={styles.testimonial_container}>
+            <h2>What the People Thinks About Us</h2>
+
+            <div className={styles.content}>
+                <TestimonialCard
+                  name="Nattasha Mith"
+                  geo="Sydney, USA"
+                  text="Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been."
+                  keyCard={1}
+                  testimonialVisible={testimonialVisible}
+                />
+                <TestimonialCard
+                  name="Raymond Galario"
+                  geo="Sydney, Australia"
+                  text="Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been scrambled it to make a type book."
+                  keyCard={2}
+                  testimonialVisible={testimonialVisible}
+                />
+                <TestimonialCard
+                  name="Benny Roll"
+                  geo="Sydney, New York"
+                  text="Lorem Ipsum is simply dummy text of the typesetting industry. Ipsum has been scrambled."
+                  keyCard={3}
+                  testimonialVisible={testimonialVisible}
+                />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client section */}
+      <section className={styles.client}>
+        {
+          (() => {
+            const clientImages = [img01, img02, img03, img04, img05];
+            const items = [];
+
+            for (let i=0; i<5; i++) {
+              items.push(
+                <Image
+                  src={clientImages[i]}
+                  alt={`Client ${i}`}
+                />
+              )
+            }
+            return items;
+          })()
+        }
       </section>
     </>
   );

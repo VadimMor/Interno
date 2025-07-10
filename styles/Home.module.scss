@@ -1,9 +1,5 @@
 :global(section) {
-  margin: 200px 0;
-
-  &.hero {
-    margin: 0;
-  }
+  margin: 0 0 200px 0;
 }
 
 .hero {
@@ -219,6 +215,29 @@
             &.visible {
                 clip-path: xywh(0 0 100% 100% round 0 50.08% 0 17.57%);
             }
+        }
+    }
+}
+
+.testimonial {
+    .testimonial_container {
+        padding: 88px 25px;
+
+        border-radius: 70px;
+        background: #F4F0EC;
+
+        h2 {
+            max-width: 540px;
+            margin: 0 auto 38px;
+
+            line-height: 150%;
+            letter-spacing: 2%;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
         }
     }
 }
