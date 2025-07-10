@@ -1,3 +1,11 @@
+:global(section) {
+  margin: 200px 0;
+
+  &.hero {
+    margin: 0;
+  }
+}
+
 .hero {
     padding: 330px 0;
 
@@ -55,5 +63,12 @@
                 transform: translateX(0);
             }
         }
+    }
+}
+
+.work {
+    .work_container {
+        display: flex;
+        justify-content: space-around;
     }
 }

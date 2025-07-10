@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useRef } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 // Импорт компонентов
@@ -11,47 +12,33 @@ import styles from '@styles/Home.module.scss';
 
 // Импорт изображений
 import heroImg from '@assets/hero_back.jpg';
+import WorkCard from '@/components/Home/WorkCard';
+
+import { useInView } from '@/hooks/useInView';
 
 export default function Home() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [visible, setVisible] = useState(false);
-  
-  useEffect(() => {
-    console.log(!sectionRef.current)
-    if (!sectionRef.current) return;
+  const router = useRouter();
+  const heroRef = useRef<HTMLElement | null>(null);
+  const workRef = useRef<HTMLElement | null>(null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      { threshold: 0.3 } // Процент видимости секции для срабатывания
-    );
-
-    observer.observe(sectionRef.current);
-
-    return () => observer.disconnect();
-  }, []);
+  const heroVisible = useInView(heroRef);
+  const workVisible = useInView(workRef);
 
   return (
     <>
       {/* Hero section */}
-      <section className={styles.hero} ref={sectionRef}>
+      <section className={styles.hero} ref={heroRef}>
         <div className="container">
           <div className={styles.hero_container}>
-            <h1 className={`${visible ? styles.visible : ''}`}>Let Your Home Be Unique</h1>
-            <div className={`${styles.text} ${visible ? styles.visible : ''}`}>
+            <h1 className={`${heroVisible  ? styles.visible : ''}`}>Let Your Home Be Unique</h1>
+            <div className={`${styles.text} ${heroVisible  ? styles.visible : ''}`}>
               There are many variations of the passages of lorem Ipsum fromavailable,variations of the passages.
             </div>
-            <div className={`${styles.btn} ${visible ? styles.visible : ''}`}>
+            <div className={`${styles.btn} ${heroVisible  ? styles.visible : ''}`}>
               <MainButton
                 style='default'
                 text='Get Started'
-                click={() => {}}
+                click={() => router.push('/services')}
               />
             </div>
           </div>
@@ -70,6 +57,31 @@ export default function Home() {
           }}
           priority
         />
+      </section>
+
+      <section className={styles.work} ref={workRef}>
+        <div className="container">
+          <div className={styles.work_container}>
+            <WorkCard
+              title="Project Plan"
+              text="There are many variations of the passages of lorem Ipsum from available, majority."
+              link="project"
+              visible={workVisible}
+            />
+            <WorkCard
+              title="Interior Work"
+              text="There are many variations of the passages of lorem Ipsum from available, majority."
+              link="project"
+              visible={workVisible}
+            />
+            <WorkCard
+              title="Realization"
+              text="There are many variations of the passages of lorem Ipsum from available, majority."
+              link="project"
+              visible={workVisible}
+            />
+          </div>
+        </div>
       </section>
     </>
   );
