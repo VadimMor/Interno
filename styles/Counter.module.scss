@@ -1,0 +1,74 @@
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    position: relative;
+
+    opacity: 0;
+
+    transition: opacity 2.5s ease, transform 2s ease;
+
+    .title {
+        font-size: 85px;
+        line-height: 125%;
+        letter-spacing: 2%;
+        text-align: center;
+        color: var(--first-color);
+    }
+    .text {
+        font-family: var(--font-jost);
+        font-size: 22px;
+        line-height: 150%;
+        letter-spacing: 1%;
+        text-align: center;
+        color: var(--fourth-color);
+    }
+    
+    &::before {
+        content: "";
+        width: 1px;
+        height: 100%;
+
+        position: absolute;
+        top: 50%;
+        right: 0;
+
+        background: var(--first-color);
+
+        transform: translate(-50%, -50%);
+        transition: top 2s ease;
+    }
+    &:last-child {
+        &::before {
+            background: transparent;
+        }
+    }
+    &:nth-child(even) {
+        transform: translateY(55px);
+
+        &::before {
+            top: calc(50% - 55px);
+        }
+    }
+    &:nth-child(odd) {
+        transform: translateY(-55px);
+
+        &::before {
+            top: calc(50% + 55px);
+        }
+    }
+    &:nth-child(odd) {
+        transform: translateY(-55px);
+    }
+    &.visible {
+        opacity: 1;
+
+        transform: translateY(0);
+        
+        &::before {
+            top: 50%;
+        }
+    }
+}

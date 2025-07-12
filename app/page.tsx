@@ -3,11 +3,13 @@
 import React, { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Импорт компонентов
 import MainButton from '@/components/MainButton';
 import WorkCard from '@/components/Home/WorkCard';
 import TestimonialCard from '@/components/Home/TestimonialCard';
+import Counter from '@/components/Home/Counter';
 
 // Импорт стилей
 import styles from '@styles/Home.module.scss';
@@ -26,7 +28,6 @@ import dataProjects from '@assets/json/projectsHome.json'
 
 // Импорт хуков
 import { useInView } from '@/hooks/useInView';
-import Link from 'next/link';
 
 export default function Home() {
   const router = useRouter();
@@ -35,12 +36,14 @@ export default function Home() {
   const aboutRef = useRef<HTMLElement | null>(null);
   const testimonialRef = useRef<HTMLElement | null>(null);
   const projectsRef = useRef<HTMLElement | null>(null);
+  const counterRef = useRef<HTMLElement | null>(null);
 
   const heroVisible = useInView(heroRef);
   const workVisible = useInView(workRef);
   const aboutVisible = useInView(aboutRef);
   const testimonialVisible = useInView(testimonialRef);
   const projectsVisible = useInView(projectsRef);
+  const counterVisible = useInView(counterRef);
 
   return (
     <>
@@ -257,6 +260,34 @@ export default function Home() {
               )
             }
           </div>
+        </div>
+      </section>
+
+      {/* Counter section */}
+      <section className={styles.counter} ref={counterRef}>
+        <div className="container">
+            <div className={styles.counter_container}>
+              <Counter
+                title='12'
+                text='Years Of Experiance'
+                visible={counterVisible}
+              />
+              <Counter
+                title='85'
+                text='Success Project'
+                visible={counterVisible}
+              />
+              <Counter
+                title='15'
+                text='Active Project'
+                visible={counterVisible}
+              />
+              <Counter
+                title='95'
+                text='Happy Customers'
+                visible={counterVisible}
+              />
+            </div>
         </div>
       </section>
     </>

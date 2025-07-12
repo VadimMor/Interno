@@ -473,6 +473,18 @@
     }
 }
 
+.counter {
+    padding: 151px 0;
+    
+    background: #F4F0EC;
+
+    .counter_container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
 
 // Анимация вращения и дрожания
 @keyframes shake-rotate {
