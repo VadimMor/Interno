@@ -21,8 +21,12 @@ import img03 from '@assets/03.svg';
 import img04 from '@assets/04.svg';
 import img05 from '@assets/05.svg';
 
+// Импорт json
+import dataProjects from '@assets/json/projectsHome.json'
+
 // Импорт хуков
 import { useInView } from '@/hooks/useInView';
+import Link from 'next/link';
 
 export default function Home() {
   const router = useRouter();
@@ -30,11 +34,13 @@ export default function Home() {
   const workRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
   const testimonialRef = useRef<HTMLElement | null>(null);
+  const projectsRef = useRef<HTMLElement | null>(null);
 
   const heroVisible = useInView(heroRef);
   const workVisible = useInView(workRef);
   const aboutVisible = useInView(aboutRef);
   const testimonialVisible = useInView(testimonialRef);
+  const projectsVisible = useInView(projectsRef);
 
   return (
     <>
@@ -147,7 +153,7 @@ export default function Home() {
       <section className={styles.testimonial} ref={testimonialRef}>
         <div className="container">
           <div className={styles.testimonial_container}>
-            <h2>What the People Thinks About Us</h2>
+            <h2 className={`${testimonialVisible ? styles.visible : ''}`}>What the People Thinks About Us</h2>
 
             <div className={styles.content}>
                 <TestimonialCard
@@ -195,6 +201,60 @@ export default function Home() {
                 }
                 return items;
               })()
+            }
+          </div>
+        </div>
+      </section>
+
+      {/* Projects section */}
+      <section className={styles.projects} ref={projectsRef}>
+        <div className="container">
+          <div className={styles.projects_container}>
+            <h2 className={`${projectsVisible ? styles.visible : ''}`}>Follow Our Projects</h2>
+            <div className={`${styles.sub_title} ${projectsVisible ? styles.visible : ''}`}>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</div>
+
+            {
+              dataProjects && dataProjects.length < 1 ? (
+                <div className={styles.error}>Projects not found</div>
+              ) : (
+                <div className={styles.items}>
+                  {
+                    dataProjects.map((item, index) => (
+                      <Link
+                        href={item.link}
+                        className={`${styles.item} ${styles[`item_${index}`]} ${projectsVisible ? styles.visible : ''}`} 
+                        key={index}
+                      >
+                        <div className={styles.img}>
+                          <Image
+                            key={`client-${index}`}
+                            src={item.img}
+                            alt={item.title}
+                            fill
+                            style={{
+                              objectFit: "cover",
+                              top: '50%',
+                              left: '50%',
+                              transform: 'translate(-50%, -50%)',
+                              zIndex: '1'
+                            }}
+                          />
+                        </div>
+                        <div className={styles.content}>
+                          <div className={styles.info}>
+                            <div className={styles.title}>{item.title}</div>
+                            <div className={styles.tag}>{item.tag}</div>
+                          </div>
+
+                          <div className={styles.icon}>
+                            <div className='icon-keyboard_arrow_right'/>
+                          </div>
+                        </div>
+                      </Link>
+                    ))
+                  }
+                </div>
+              )
             }
           </div>
         </div>
