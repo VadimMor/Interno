@@ -3,11 +3,15 @@
 import React, { useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Импорт компонентов
 import MainButton from '@/components/MainButton';
 import WorkCard from '@/components/Home/WorkCard';
 import TestimonialCard from '@/components/Home/TestimonialCard';
+import Counter from '@/components/Home/Counter';
+import BlogCard from '@/components/Home/BlogCard';
+import ContactUs from '@/components/ContactUs';
 
 // Импорт стилей
 import styles from '@styles/Home.module.scss';
@@ -21,6 +25,10 @@ import img03 from '@assets/03.svg';
 import img04 from '@assets/04.svg';
 import img05 from '@assets/05.svg';
 
+// Импорт json
+import dataProjects from '@assets/json/projectsHome.json'
+import dataBlog from '@assets/json/blog.json';
+
 // Импорт хуков
 import { useInView } from '@/hooks/useInView';
 
@@ -30,11 +38,17 @@ export default function Home() {
   const workRef = useRef<HTMLElement | null>(null);
   const aboutRef = useRef<HTMLElement | null>(null);
   const testimonialRef = useRef<HTMLElement | null>(null);
+  const projectsRef = useRef<HTMLElement | null>(null);
+  const counterRef = useRef<HTMLElement | null>(null);
+  const blogRef = useRef<HTMLElement | null>(null);
 
   const heroVisible = useInView(heroRef);
   const workVisible = useInView(workRef);
   const aboutVisible = useInView(aboutRef);
   const testimonialVisible = useInView(testimonialRef);
+  const projectsVisible = useInView(projectsRef);
+  const counterVisible = useInView(counterRef);
+  const blogVisible = useInView(blogRef);
 
   return (
     <>
@@ -147,7 +161,7 @@ export default function Home() {
       <section className={styles.testimonial} ref={testimonialRef}>
         <div className="container">
           <div className={styles.testimonial_container}>
-            <h2>What the People Thinks About Us</h2>
+            <h2 className={`${testimonialVisible ? styles.visible : ''}`}>What the People Thinks About Us</h2>
 
             <div className={styles.content}>
                 <TestimonialCard
@@ -190,6 +204,7 @@ export default function Home() {
                     <Image
                       src={clientImages[i]}
                       alt={`Client ${i}`}
+                      key={i}
                     />
                   )
                 }
@@ -199,6 +214,122 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Projects section */}
+      <section className={styles.projects} ref={projectsRef}>
+        <div className="container">
+          <div className={styles.projects_container}>
+            <h2 className={`${projectsVisible ? styles.visible : ''}`}>Follow Our Projects</h2>
+            <div className={`${styles.sub_title} ${projectsVisible ? styles.visible : ''}`}>It is a long established fact that a reader will be distracted by the of readable content of page  lookings at its layouts  points.</div>
+
+            {
+              dataProjects && dataProjects.length < 1 ? (
+                <div className={styles.error}>Projects not found</div>
+              ) : (
+                <div className={styles.items}>
+                  {
+                    dataProjects.map((item, index) => (
+                      <Link
+                        href={item.link}
+                        title={item.title}
+                        className={`${styles.item} ${styles[`item_${index}`]} ${projectsVisible ? styles.visible : ''}`} 
+                        key={index}
+                      >
+                        <div className={styles.img}>
+                          <Image
+                            key={`client-${index}`}
+                            src={item.img}
+                            alt={item.title}
+                            fill
+                            style={{
+                              objectFit: "cover",
+                              top: '50%',
+                              left: '50%',
+                              transform: 'translate(-50%, -50%)',
+                              zIndex: '1'
+                            }}
+                          />
+                        </div>
+                        <div className={styles.content}>
+                          <div className={styles.info}>
+                            <div className={styles.title}>{item.title}</div>
+                            <div className={styles.tag}>{item.tag}</div>
+                          </div>
+
+                          <div className={styles.icon}>
+                            <div className='icon-keyboard_arrow_right'/>
+                          </div>
+                        </div>
+                      </Link>
+                    ))
+                  }
+                </div>
+              )
+            }
+          </div>
+        </div>
+      </section>
+
+      {/* Counter section */}
+      <section className={styles.counter} ref={counterRef}>
+        <div className="container">
+            <div className={styles.counter_container}>
+              <Counter
+                title='12'
+                text='Years Of Experiance'
+                visible={counterVisible}
+              />
+              <Counter
+                title='85'
+                text='Success Project'
+                visible={counterVisible}
+              />
+              <Counter
+                title='15'
+                text='Active Project'
+                visible={counterVisible}
+              />
+              <Counter
+                title='95'
+                text='Happy Customers'
+                visible={counterVisible}
+              />
+            </div>
+        </div>
+      </section>
+
+      {/* Blog section */}
+      <section className={styles.blog} ref={blogRef}>
+        <div className="container">
+            <div className={styles.blog_container}>
+              <h2 className={blogVisible ? styles.visible : ''}>Articles & News</h2>
+
+              <div className={`${styles.text} ${blogVisible ? styles.visible : ''}`}>
+                It is a long established fact that a reader will be distracted by the of readable content of a page when lookings at its layouts the points of using.
+              </div>
+
+              <div className={styles.blogCards}>
+                {
+                  dataBlog.slice(0, 3).map((item, index) => (
+                    <BlogCard 
+                      img={item.img[0]}
+                      title={item.title}
+                      tags={item.tag}
+                      date={item.date}
+                      link=''
+                      visible={blogVisible}
+                      altStyle={index%2 !== 0}
+                      key={index}
+                    />
+                  ))
+                }
+              </div>
+            </div>
+        </div>
+      </section>
+
+      {/* Contact section */}
+      <ContactUs />
     </>
   );
 }

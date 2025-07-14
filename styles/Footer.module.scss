@@ -1,0 +1,143 @@
+
+.footer_container {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding-bottom: 50px;
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        max-width: 390px;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--second-color);
+            transition: transform 0.3s ease;
+
+            .icon {
+                font-size: 34px;
+                color: var(--first-color);
+                transition: transform 0.3s ease;
+            }
+            
+            .logo_text {
+                font-size: 40px;
+                font-weight: bold;
+                
+                span {
+                    display: inline-block;
+                }
+            }
+
+            &:hover,
+            &:focus {
+                .logo_text {
+                    span {
+                        display: inline-block;
+                        animation: bounce 2.5s ease infinite;
+                        
+                        // Каждая буква будет анимироваться с небольшой задержкой
+                        @for $i from 1 through 7 {
+                            &:nth-child(#{$i}) {
+                                animation-delay: $i * 0.1s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .text {
+            font-family: var(--font-jost);
+            font-size: 22px;
+            line-height: 150%;
+            letter-spacing: 1%;
+            color: var(--fourth-color);
+        }
+    }
+
+    .pages {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 26px;
+
+        a {
+            font-family: var(--font-jost);
+            font-size: 22px;
+            letter-spacing: 1%;
+            line-height: 150%;
+            color: var(--fourth-color);
+
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: var(--first-color);
+            }
+        }
+    }
+
+    .services {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 26px;
+
+        a {
+            font-family: var(--font-jost);
+            font-size: 22px;
+            letter-spacing: 1%;
+            line-height: 150%;
+            color: var(--fourth-color);
+
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: var(--first-color);
+            }
+        }
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 26px;
+        max-width: 258px;
+
+        a {
+            font-family: var(--font-jost);
+            font-size: 22px;
+            letter-spacing: 1%;
+            line-height: 150%;
+            color: var(--fourth-color);
+
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                color: var(--first-color);
+            }
+        }
+    }
+}
+
+
+// Анимация подпрыгивания
+@keyframes bounce {
+    0%, 20% {        // 0.5s / 2.5s ≈ 20% (прыжок)
+        transform: translateY(0);
+    }
+    10% {            // Середина анимации (пик прыжка)
+        transform: translateY(-8px);
+    }
+    20.01%, 100% {   // Пауза 2s (остальные 80% времени)
+        transform: translateY(0);
+    }
+}

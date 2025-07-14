@@ -22,7 +22,7 @@ export default function MainButton({ style, text, click }: MainButtonProps) {
             onClick={click}
         >
             <span>{text}</span>
-            <span className={`icon-arrow-right ${styles.icon}`}></span>
+            <span className={`icon-arrow-right ${styles.icon}`} />
         </button>
     )
 }

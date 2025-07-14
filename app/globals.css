@@ -65,6 +65,10 @@ h2 {
 	font-size: 50px;
 	color: var(--second-color);
 }
+h3 {
+	font-size: 25px;
+	color: var(--second-color);
+}
 /*----------------------*/
 
 

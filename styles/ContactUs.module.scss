@@ -1,0 +1,39 @@
+// Descktop
+.section {
+    margin-bottom: 135px;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 80px 20px;
+
+        background: var(--second-color);
+        clip-path: xywh(50% 50% 0% 0% round 70px);
+        transition: clip-path 2s ease-in-out;
+        
+        h2 {
+            margin-bottom: 10px;
+
+            line-height: 125%;
+            text-align: center;
+            letter-spacing: 0%;
+            color: #FFF;
+        }
+
+        .text {
+            margin-bottom: 32px;
+
+            font-family: var(--font-jost);
+            line-height: 150%;
+            letter-spacing: 1%;
+            font-size: 22px;
+            color: #FFF;
+        }
+
+        &.visible {
+            clip-path: xywh(0% 0% 100% 100% round 70px);
+        }
+    }
+}
