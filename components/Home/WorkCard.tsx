@@ -14,13 +14,13 @@ interface WorkCardProps {
 
 export default function WorkCard({title, text, link, visible}: WorkCardProps) {
     return (
-        <div className={`${styles.content} ${visible ? styles.active : ''}`}>
+        <Link href={`/${link}`} title={title} className={`${styles.content} ${visible ? styles.active : ''}`}>
             <h4>{title}</h4>
             <div className={styles.text}>{text}</div>
-            <Link href={`/${link}`} className={styles.link} title={title}>
+            <div className={styles.link}>
                 <span className={styles.link_text}>Read more</span>
                 <span className={`icon-arrow-right ${styles.icon}`} />
-            </Link>
-        </div>
+            </div>
+        </Link>
     )
 }
