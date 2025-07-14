@@ -59,6 +59,42 @@
         }
     }
 
+    &.color {
+        &::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: -2;
+
+            background: var(--first-color);
+            border-radius: 18px;
+            opacity: 0.5;
+            
+            transition: transform 0.5s ease;
+        }
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            z-index: -1;
+
+            background: var(--first-color);
+            border-radius: 18px;
+        }
+
+        .icon {
+            color: var(--second-color);
+        }
+    }
+
     &:hover,
     &:focus {
         transform: translateY(-8px);

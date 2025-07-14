@@ -11,6 +11,7 @@ import WorkCard from '@/components/Home/WorkCard';
 import TestimonialCard from '@/components/Home/TestimonialCard';
 import Counter from '@/components/Home/Counter';
 import BlogCard from '@/components/Home/BlogCard';
+import ContactUs from '@/components/ContactUs';
 
 // Импорт стилей
 import styles from '@styles/Home.module.scss';
@@ -326,6 +327,9 @@ export default function Home() {
             </div>
         </div>
       </section>
+
+      {/* Contact section */}
+      <ContactUs />
     </>
   );
 }
