@@ -475,13 +475,64 @@
 
 .counter {
     padding: 151px 0;
-    
+
     background: #F4F0EC;
 
     .counter_container {
         display: flex;
         justify-content: space-around;
         align-items: center;
+    }
+}
+
+.blog {
+    .blog_container {
+        h2 {
+            margin-bottom: 12px;
+
+            text-align: center;
+            letter-spacing: 2%;
+            line-height: 125%;
+
+            opacity: 0;
+
+            transform: translateY(40px);
+            transition: opacity 2.5s ease, transform 2s ease;
+
+            &.visible {
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+        }
+
+        .text {
+            max-width: 800px;
+            margin: 0 auto 52px;
+
+            opacity: 0;
+
+            font-family: var(--font-jost);
+            text-align: center;
+            font-size: 22px;
+            line-height: 150%;
+            letter-spacing: 1%;
+            color: var(--second-color);
+
+            transform: translateY(40px);
+            transition: opacity 2.5s 0.35s ease, transform 2s 0.35s ease;
+
+            &.visible {
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+        }
+
+        .blogCards {
+            display: flex;
+            justify-content: space-between;
+        }
     }
 }
 

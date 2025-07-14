@@ -1,0 +1,91 @@
+.card {
+    max-width: 380px;
+    width: 100%;
+    padding: 21px 21px 36px 21px;
+
+    border-radius: 62px;
+    border: 1px solid #E7E7E7;
+    opacity: 0;
+
+    transform: translateY(40px);
+    transition: opacity 2.5s 0.7s ease, transform 2s 0.7s ease, box-shadow 0.3s ease;
+
+    .img {
+        width: 100%;
+        aspect-ratio: 340 / 289;
+        margin-bottom: 21px;
+
+        position: relative;
+
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+        overflow: hidden;
+    }
+
+    h3 {
+        max-width: 90%;
+        margin-bottom: 30px;
+    }
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .date {
+            font-family: var(--font-jost);
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 1%;
+            color: var(--fourth-color);
+        }
+        .icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 52px;
+            width: 100%;
+            aspect-ratio: 1;
+
+            border-radius: 50%;
+            background: var(--third-color);
+
+            font-size: 28px;
+            color: var(--fourth-color);
+        }
+    }
+
+    &.alt {
+        background: #F4F0EC;
+
+        .content {
+            .icon {
+                background: #FFF;
+            }
+        }
+    }
+    &.visible {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+    &:hover,
+    &:focus {
+        box-shadow: 0px 0px 10px 5px rgba($color: #CDA274, $alpha: 0.3);
+
+        .content {
+            .icon {
+                span {
+                    animation: shake 1.4s ease infinite;
+                } 
+            }
+        }
+    }
+}
+
+// Анимация Ммигания
+@keyframes shake {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.5); }
+    100% { transform: scale(1); }
+}

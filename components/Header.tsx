@@ -60,7 +60,7 @@ export default function Header() {
             <div className="container">
                 <div className={styles.header_container}>
                     {/* Logo */}
-                    <Link href={"/"} className={styles.logo}>
+                    <Link href={"/"} className={styles.logo} title="Home">
                         <span className={`icon-Logo ${styles.icon}`} />
                         <span className={styles.text}>
                             {logoText.split('').map((letter, index) => (
@@ -73,12 +73,12 @@ export default function Header() {
                     <div className={styles.content}>
                         {/* Menu */}
                         <nav>
-                            <Link href={'/'} className={styles.link}>Home</Link>
-                            <Link href={'/pages'} className={styles.link}>Pages</Link>
-                            <Link href={'/services'} className={styles.link}>Services</Link>
-                            <Link href={'/project'} className={styles.link}>Project</Link>
-                            <Link href={'/blog'} className={styles.link}>Blog</Link>
-                            <Link href={'/contact'} className={styles.link}>Contact</Link>
+                            <Link href={'/'} className={styles.link} title="Home">Home</Link>
+                            <Link href={'/pages'} className={styles.link} title="Pages">Pages</Link>
+                            <Link href={'/services'} className={styles.link} title="Services">Services</Link>
+                            <Link href={'/project'} className={styles.link} title="Project">Project</Link>
+                            <Link href={'/blog'} className={styles.link} title="Blog">Blog</Link>
+                            <Link href={'/contact'} className={styles.link} title="Contact">Contact</Link>
                         </nav>
 
                         {/* Search */}
