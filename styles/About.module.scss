@@ -1,0 +1,11 @@
+// Global
+:global(section) {
+  margin: 0 0 200px 0;
+
+  &.testimonial,
+  &.client {
+    margin-bottom: 150px;
+  }
+}
+
+// Descktop
