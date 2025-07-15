@@ -29,7 +29,7 @@ export default function Footer() {
                     <div className={styles.pages}>
                         <h3>Pages</h3>
 
-                        <Link href="/aboutUs" title='About Us'>About Us</Link>
+                        <Link href="/about-us" title='About Us'>About Us</Link>
                         <Link href="/projects" title='Our Projects'>Our Projects</Link>
                         <Link href="/team" title='Our Team'>Our Team</Link>
                         <Link href="/contact" title='Contact Us'>Contact Us</Link>
@@ -40,9 +40,9 @@ export default function Footer() {
                         <h3>Services</h3>
 
                         <Link href="/kitchan" title='Kitchan'>Kitchan</Link>
-                        <Link href="/livingArea" title='Living Area'>Living Area</Link>
+                        <Link href="/living-area" title='Living Area'>Living Area</Link>
                         <Link href="/bathroom" title='Bathroom'>Bathroom</Link>
-                        <Link href="/dinningHall" title='Dinning Hall'>Dinning Hall</Link>
+                        <Link href="/dinning-hall" title='Dinning Hall'>Dinning Hall</Link>
                         <Link href="/bedroom" title='Bedroom'>Bedroom</Link>
                     </div>
 
